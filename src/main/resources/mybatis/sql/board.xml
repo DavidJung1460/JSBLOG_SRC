@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cos.blog.mvc.repository.BoardRepository">
+	<select id="getList" parameterType="com.cos.blog.mvc.domain.Board" resultType="com.cos.blog.mvc.domain.Board">
+		SELECT B.BOARD_SEQ,
+		               B.TITLE,
+		               B.CONTENTS,
+		               B.REG_DATE
+		   FROM BOARD B
+		 ORDER BY B.REG_DATE DESC
+	</select>
+	
+	<select id="get" parameterType="int" resultType="com.cos.blog.mvc.domain.Board">
+		SELECT B.BOARD_SEQ,
+		               B.TITLE,
+		               B.CONTENTS,
+		               B.REG_DATE
+		   FROM BOARD B
+		 ORDER BY B.REG_DATE DESC
+		 WHERE B.BOARD_SEQ = #{boardSeq}
+	</select>
+	
+	<insert id="save" parameterType="com.cos.blog.mvc.domain.Board">
+		INSERT INTO BOARD
+		(
+			TITLE,
+			CONTENTS,
+			REG_DATE
+		)
+		VALUES
+		(
+		    #{title},
+		    #{contents},
+		    NOW()
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.cos.blog.mvc.domain.Board">
+		UPDATE BOARD
+		SET
+			TITLE = #{title}
+			CONTENTS = #{contents}
+		WHERE BOARD_SEQ = #{boardSeq}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD
+		WHERE BOARD_SEQ = #{boardSeq}
+	</delete>
+</mapper>
