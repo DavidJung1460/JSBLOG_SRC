@@ -11,7 +11,7 @@ import com.cos.blog.mvc.domain.Board;
  * @author 정희진
  */
 @Repository
-public interface BoardRepository {
+public interface BoardRepositoryMybatis {
 	
 	List<Board> getList();
 	

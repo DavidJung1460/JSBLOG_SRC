@@ -7,7 +7,7 @@ server:
       enabled: true
       force: true
     session:
-      timeout: 10
+      timeout: 14400
 logging:
   level:
     org.springframework.web : debug
@@ -32,7 +32,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -44,5 +44,5 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
-  session:
-    store-type: redis
+cos:
+  key: cos1234

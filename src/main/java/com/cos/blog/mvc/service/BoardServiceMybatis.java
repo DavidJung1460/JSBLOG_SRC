@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cos.blog.mvc.domain.Board;
-import com.cos.blog.mvc.repository.BoardRepository;
+import com.cos.blog.mvc.repository.BoardRepositoryMybatis;
 
 
 /**
@@ -14,10 +14,10 @@ import com.cos.blog.mvc.repository.BoardRepository;
  * @author 정희진
  */
 @Service
-public class BoardService {
+public class BoardServiceMybatis {
 	
 	@Autowired
-	private BoardRepository repository;
+	private BoardRepositoryMybatis repository;
 	
 	/**
 	 * 목록 리턴

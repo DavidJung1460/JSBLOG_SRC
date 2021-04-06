@@ -5,9 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>초기진입 jsp</title>
-<script type="text/javascript">
-	alert("index 진입");
-</script>
 </head>
 <body>
 	<jsp:forward page="/main"></jsp:forward>
