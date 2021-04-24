@@ -8,6 +8,9 @@ server:
       force: true
     session:
       timeout: 14400
+  tomcat:
+    max-http-form-post-size: 50MB
+
 logging:
   level:
     org.springframework.web : debug
@@ -28,7 +31,10 @@ spring:
     url: jdbc:mariadb://localhost:3306/blog
     username: cos
     password: cos1234
-  
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:

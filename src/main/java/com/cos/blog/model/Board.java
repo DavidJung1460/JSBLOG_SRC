@@ -1,6 +1,7 @@
 package com.cos.blog.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,7 +18,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,9 +41,12 @@ public class Board implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable=false,length = 100)
+	@Column(nullable=false,length = 200)
 	private String title;
 
+	@Column(length = 200)
+	private String subject;
+	
 	@Lob
 	private String contents;
 	
@@ -55,8 +62,42 @@ public class Board implements Serializable{
 	@OrderBy("id desc")
 	private List<Reply> replys;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="pgmcd")
+	private PgmMenu  pgmMenu;
+	
+	@ColumnDefault("'N'")
+	@Column(length = 1)
+	private String privateYn;
+	
+	@Column(length = 100)
+	private String boardPass;
+	
+	@ColumnDefault("'N'")
+	@Column(length = 1)
+	private String hiddenYn;
+	
+	@ColumnDefault("'N'")
+	@Column(length = 1)
+	private String noticeYn;
+	
+	@ColumnDefault("'N'")
+	@Column(length = 1)
+	private String mainNoticeYn;
+	
+    private String originFilename;
+
+    private String filename;
+
+    private String filePath;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
 	@CreationTimestamp
 	private LocalDateTime regDate;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
+	@UpdateTimestamp//업데이트시 시간 자동 입력
+	private Timestamp updDate;
 }
 
 

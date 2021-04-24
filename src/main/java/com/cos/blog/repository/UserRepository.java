@@ -2,8 +2,9 @@ package com.cos.blog.repository;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import com.cos.blog.model.User;
 
@@ -14,9 +15,8 @@ import com.cos.blog.model.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	//SELECT * FROM userWHERE username = ?
 	Optional<User> findByUsername(String username);
-	
-	
-	
+	Page<User> findByUsernameContaining(String keyword, Pageable pageable);
+	Page<User> findByNickNameContaining(String keyword, Pageable pageable);
 }
 //JPA Naming 전략 (명시 된 이름으로 쿼리를 짠다)
 //본래 함수명이 findByUserNameAndPassword 이겠지만 대문자마다 

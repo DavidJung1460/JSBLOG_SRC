@@ -37,6 +37,9 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="/um/updateForm">회원정보</a>
 					</li>
+					<li class="nav-item"><a class="nav-link" href="/newMenu">신규화면 (구축중)</a>
+					</li>
+					<li>
 					<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a>
 					</li>
 				</ul>			

@@ -5,3 +5,18 @@
 	background-repeat : no-repeat;
 	background-size: cover; */
 } 
+
+/* 	.container {
+				margin-left: 15em !important;
+			} */
+			
+.content-noShadow {
+				box-shadow: 0 0 0em 0em rgba(0, 0, 0, 0);
+			}
+
+.calcal{
+	background-image: url("/images/calandar.png"); 
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 25px 25px;
+}

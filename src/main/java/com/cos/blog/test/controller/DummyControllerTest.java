@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cos.blog.enumtype.RoleType;
+import com.cos.blog.model.Grade;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 
@@ -147,9 +147,10 @@ public class DummyControllerTest {
 		System.out.println("username : "+user.getUsername());
 		System.out.println("password : "+user.getPassword());
 		System.out.println("email : "+user.getEmail());
-		
+		Grade grade = new Grade();
+		grade.setGradeCd(1);
 		//RoleType enum에 정해진 값 중 골라서 넣으면 user model에 명시 된 변수 타입으로 데이터 삽입
-		user.setRole(RoleType.USER);
+		user.setGrade(grade);
 		userRepository.save(user);
 		return "회원가입이 완료되었습니다.";
 	}

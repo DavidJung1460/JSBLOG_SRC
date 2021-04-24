@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BlogControllerTest {
 	@GetMapping("/main/mybatistest")
 	public String helloGet() {
-		System.out.println("get 요청 진입");
 		return "main";
 	}
 	@PostMapping("/main/mybatistest")
 	public String helloPost() {
-		System.out.println("post 요청 진입");
 		return "main";
 	}
 }

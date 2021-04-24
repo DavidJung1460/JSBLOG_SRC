@@ -1,5 +1,5 @@
 package com.cos.blog.enumtype;
 
 public enum RoleType {
-	USER, ADMIN
+	CUSTOMER, USER, FAMILYSTOP, FAMILYWILL,FAMILY, ADMIN
 }

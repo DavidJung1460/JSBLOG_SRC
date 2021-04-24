@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
@@ -41,7 +42,7 @@ public class Reply {
 	private int id;
 	
 	@Column(nullable = false, length = 300)
-	private String content;
+	private String contents;
 	
 	@ManyToOne
 	@JoinColumn(name="boardid")
@@ -51,6 +52,7 @@ public class Reply {
 	@JoinColumn(name="userid")
 	private User user;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
 	@CreationTimestamp
 	private LocalDateTime regDate;
 }

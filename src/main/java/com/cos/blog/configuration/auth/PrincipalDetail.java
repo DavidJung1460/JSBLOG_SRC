@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.cos.blog.enumtype.RoleType;
 import com.cos.blog.model.User;
 
 import lombok.Data;
@@ -71,7 +72,8 @@ public class PrincipalDetail implements UserDetails{
 		
 		//java 1.8 부터는 변수에 람다식으로 함수 삽입 가능 (위 문법과 같은 효과)
 		//권한이 여러개면 반복문으로 처리해야 될 수 있다.
-		collectors.add(()->{ return "ROLE_"+user.getRole();});
+		RoleType grade = user.getGrade().getGradeName();
+		collectors.add(()->{ return "ROLE_"+grade;});
 		return collectors;
 	}	
 }

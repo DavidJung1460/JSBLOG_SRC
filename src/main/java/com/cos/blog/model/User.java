@@ -5,16 +5,16 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
-
-import com.cos.blog.enumtype.RoleType;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,20 +42,36 @@ public class User implements Serializable {
 	@Column(nullable = false,length = 100) //123456 => 해쉬(비밀번호 암호화 대상)
 	private String password;
 	
-	@Column(nullable = false,length = 50)
+	@Column(nullable = false,length = 100) //123456 => 해쉬(비밀번호 암호화 대상)
+	private String nickName;
+	
+	@Column(length = 50)
 	private String email;
 	
-	//@ColumnDefault("'user'")
-	@Column(length = 50)
-	//DB는 RoleType이라는게 없다. 따라서 String 이라고 알려줘야한다.
-	@Enumerated(EnumType.STRING)
-	private RoleType role; //Enum을 쓰는게 좋다. / 권한 : admin, user, manager 명시 된 타입으로 강제됨
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="gradecd")
+	private Grade grade;
 	
 	@Column(length = 50)
 	private String oauth;
 	
-	@CreationTimestamp //시간 자동 입력
-	private Timestamp createDate;
+	@Column(length=20)
+	private String ip;
 	
-
+	@Column(length=1)
+	private String perInfoYn;
+	
+	@Column(length=1)
+	private String promotionYn;
+	
+	@Column(length=1)
+	private String termsServiceYn;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
+	@CreationTimestamp //생성시 시간 자동 입력
+	private Timestamp signUpDate;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
+	@UpdateTimestamp//업데이트시 시간 자동 입력
+	private Timestamp updDate;
 }
